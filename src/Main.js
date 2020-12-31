@@ -12,9 +12,6 @@ class Main extends Component {
         trivia_question: "",
         trivia_answer: ""
     }
-    componentDidMount() {
-        this.dateFormat()
-    }
     getTrivia = async () => {
         try {
             const res = await fetch("http://jservice.io/api/random")
@@ -23,7 +20,7 @@ class Main extends Component {
             this.setState({ trivia_id: data.id })
             this.setState({ trivia_category: data.category })
             this.setState({ trivia_airdate: data.airdate })
-            this.setState({ trivia_dificulty: data.value }) // dificulty == value ???
+            this.setState({ trivia_dificulty: data.value })
             this.setState({ trivia_question: data.question })
             this.setState({ trivia_answer: data.answer })
         } catch (err) {
