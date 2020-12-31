@@ -40,6 +40,9 @@ body {
   background-color: var(--primario);
   color: rgb(37, 37, 37);
 }
+.clickable{
+  cursor: pointer;
+}
 .question-container{
   background-color: white;
   padding: 20px;

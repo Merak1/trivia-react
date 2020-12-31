@@ -53,8 +53,8 @@ class Main extends Component {
     render() {
         if (this.state.trivia_id === "") {
             return (
-                <div className=" start-game">
-                    <h1 onClick={this.getTrivia} >START GAME</h1>
+                <div onClick={this.getTrivia} className="clickable start-game">
+                    <h1  >START GAME</h1>
                 </div>
             )
         } else {
@@ -77,7 +77,7 @@ class Main extends Component {
                                     : <div className="question-answer">  {this.state.trivia_answer} </div>
                                 }
                             </div>
-                            <div onClick={this.viewQuestion} className="question-show-answer">
+                            <div onClick={this.viewQuestion} className="clickable question-show-answer">
                                 {this.state.showing
                                     ? <h1>REVEAL ANSWER</h1>
                                     : <h1>VIEW QUESTION</h1>
@@ -89,7 +89,7 @@ class Main extends Component {
                                 ? <div className="blocked row next-question">
                                     <h1 >NEXT QUESTION</h1>
                                 </div>
-                                : <div onClick={this.newQuestion} className=" row next-question ">
+                                : <div onClick={this.newQuestion} className="clickable  row next-question ">
                                     <h1 >NEXT QUESTION</h1>
                                 </div>
                         }
