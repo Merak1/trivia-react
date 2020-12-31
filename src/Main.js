@@ -5,7 +5,6 @@ class Main extends Component {
         burned_questions: 0,
         last_Question_id: "",
         showing: true,
-        trivia: {},
         trivia_id: "",
         trivia_category: {},
         trivia_airdate: "",
@@ -14,7 +13,7 @@ class Main extends Component {
         trivia_answer: ""
     }
     componentDidMount() {
-        console.log(typeof this.state.trivia)
+        this.dateFormat()
     }
     getTrivia = async () => {
         try {
@@ -22,16 +21,12 @@ class Main extends Component {
             const res = await fetch("http://jservice.io/api/random")
             let data = await res.json()
             data = data[0]
-            this.setState({ trivia: data })
             this.setState({ trivia_id: data.id })
             this.setState({ trivia_category: data.category })
             this.setState({ trivia_airdate: data.airdate })
             this.setState({ trivia_dificulty: data.value }) // dificulty == value ???
             this.setState({ trivia_question: data.question })
             this.setState({ trivia_answer: data.answer })
-
-            console.log('data', this.state.trivia)
-
         } catch (err) {
             console.log("err", err)
         }
@@ -57,7 +52,11 @@ class Main extends Component {
 
         }
     }
-
+    dateFormat = () => {
+        let formatedDate = new Date(this.state.trivia_airdate);
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        return formatedDate.toLocaleDateString(undefined, options)
+    }
 
     render() {
         if (this.state.trivia_id === "") {
@@ -79,7 +78,7 @@ class Main extends Component {
                         </div>
                         <div className="row trivia-question">
                             <div className="trivia-question__data">
-                                <div className="question-airdate"> air date: {this.state.trivia_airdate} </div>
+                                <div className="question-airdate"> air date: {this.dateFormat()} </div>
                                 <div className="question-dificulty"> dificulty:  {this.state.trivia_dificulty} </div>
                                 {this.state.showing
                                     ? <div className="question-answer">{this.state.trivia_question}</div>
