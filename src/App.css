@@ -1,38 +1,85 @@
+body {
+  --primario: #aeb3ca;
+  --secundario: #304980;
+  --terciario: #4da1f0;
+  --extra: #E0D68A;
+  background-color: var(--primario);
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
 .App {
   text-align: center;
+  height: 100vh;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+/* -----------Container------------- */
+
+.start-game{
+  background-color: var(--secundario);
   color: white;
+  padding: 20px;
+  margin: auto;
+  width: 90vw;
+  border-radius: 10px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  
+}
+.row {
+  background-color: var(--terciario);
+  border-radius: 5px;
+  margin: 5px;
+  padding: 10px 0px;
+
+}
+.blocked {
+  pointer-events: none;
+  background-color: var(--primario);
+  color: rgb(37, 37, 37);
+}
+.question-container{
+  background-color: white;
+  padding: 20px;
+
+}
+/* -----------question body------------- */
+.trivia-question__data{
+display: flex;
+flex-wrap: wrap ;
 }
 
-.App-link {
-  color: #61dafb;
+.question-dificulty, .question-airdate{
+width: 50%;
+}
+.question-answer{
+  width: 100%;
+  background-color: var(--secundario);
+  color: white;
+  padding: 20px 0px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.trivia-question {
+  padding-bottom: 0;
+}
+.question-show-answer{
+  background-color: rgb(235, 229, 147);
+  border-radius: 0px 0px 5px 5px;
+  padding: 10px 0px;
+
+}
+.question-show-answer h1 {
+  margin: 0;
+  border: 0;
+}
+/* -----------next question ------------- */
+
+.next-question {
+  margin-top: 20px;
+}
+.next-question h1{
+  font-family: Gyparody;
+  font: Gyparody;
 }
