@@ -48,7 +48,7 @@ class Main extends Component {
     }
     burnCurrentQuestion = (currentQuestionId) => {
         // esto puede quedar más limpio 
-        if (this.state.last_Question_id === "") { //primer pregunta
+        if (this.state.last_Question_id === "") {
             this.setState({ burned_questions: this.state.burned_questions + 1 })
             this.setState({ last_Question_id: currentQuestionId })
         } else if (currentQuestionId !== this.state.last_Question_id) {
@@ -81,13 +81,10 @@ class Main extends Component {
                             <div className="trivia-question__data">
                                 <div className="question-airdate"> air date: {this.state.trivia_airdate} </div>
                                 <div className="question-dificulty"> dificulty:  {this.state.trivia_dificulty} </div>
-                                {/* <div className="question-answer"> */}
                                 {this.state.showing
                                     ? <div className="question-answer">{this.state.trivia_question}</div>
                                     : <div className="question-answer">  {this.state.trivia_answer} </div>
                                 }
-                                {/* </div> */}
-
                             </div>
                             <div onClick={this.viewQuestion} className="question-show-answer">
                                 {this.state.showing
