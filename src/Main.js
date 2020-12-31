@@ -17,7 +17,6 @@ class Main extends Component {
     }
     getTrivia = async () => {
         try {
-
             const res = await fetch("http://jservice.io/api/random")
             let data = await res.json()
             data = data[0]
@@ -36,20 +35,13 @@ class Main extends Component {
         this.setState({ showing: true })
     }
     viewQuestion = () => {
-        // DESABILITA NEXT QUESTION PARA PODER HACER CLICK
-        // QUEMA LA PREGUNTA +1 al contador de preguntas quemadas solo una vez verificar con id??
         this.burnCurrentQuestion(this.state.trivia_id)
         this.setState({ showing: !this.state.showing })
     }
     burnCurrentQuestion = (currentQuestionId) => {
-        // esto puede quedar más limpio 
-        if (this.state.last_Question_id === "") {
+        if (this.state.last_Question_id === "" || currentQuestionId !== this.state.last_Question_id) {
             this.setState({ burned_questions: this.state.burned_questions + 1 })
             this.setState({ last_Question_id: currentQuestionId })
-        } else if (currentQuestionId !== this.state.last_Question_id) {
-            this.setState({ burned_questions: this.state.burned_questions + 1 })
-            this.setState({ last_Question_id: currentQuestionId })
-
         }
     }
     dateFormat = () => {
@@ -61,8 +53,8 @@ class Main extends Component {
     render() {
         if (this.state.trivia_id === "") {
             return (
-                <div className="start-game">
-                    <h1 onClick={this.getTrivia} >Main game</h1>
+                <div className=" start-game">
+                    <h1 onClick={this.getTrivia} >START GAME</h1>
                 </div>
             )
         } else {
@@ -105,7 +97,6 @@ class Main extends Component {
                 </div>
             )
         }
-
     }
 }
 
