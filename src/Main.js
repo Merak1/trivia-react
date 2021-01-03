@@ -2,27 +2,30 @@ import React, { Component } from 'react'
 
 class Main extends Component {
     state = {
-        burned_questions: 0,
-        last_Question_id: "",
+        burnedQuestions: 0,
+        lastQuestionId: "",
         showing: true,
-        trivia_id: "",
-        trivia_category: {},
-        trivia_airdate: "",
-        trivia_dificulty: "",
-        trivia_question: "",
-        trivia_answer: ""
+        triviaId: "",
+        triviaCategory: {},
+        triviaAirdate: "",
+        triviaDificulty: "",
+        triviaQuestion: "",
+        triviaAnswer: ""
     }
     getTrivia = async () => {
         try {
             const res = await fetch("http://jservice.io/api/random")
-            let data = await res.json()
-            data = data[0]
-            this.setState({ trivia_id: data.id })
-            this.setState({ trivia_category: data.category })
-            this.setState({ trivia_airdate: data.airdate })
-            this.setState({ trivia_dificulty: data.value })
-            this.setState({ trivia_question: data.question })
-            this.setState({ trivia_answer: data.answer })
+            const data = await res.json()
+            const triviaData = data[0]
+            console.log(triviaData)
+            this.setState({
+                triviaId: triviaData.id,
+                triviaCategory: triviaData.category.title,
+                triviaAirdate: triviaData.airdate,
+                triviaDificulty: triviaData.value,
+                triviaQuestion: triviaData.question,
+                triviaAnswer: triviaData.answer
+            })
         } catch (err) {
             console.log("err", err)
         }
@@ -32,68 +35,73 @@ class Main extends Component {
         this.setState({ showing: true })
     }
     viewQuestion = () => {
-        this.burnCurrentQuestion(this.state.trivia_id)
+        this.burnCurrentQuestion()
         this.setState({ showing: !this.state.showing })
     }
-    burnCurrentQuestion = (currentQuestionId) => {
-        if (this.state.last_Question_id === "" || currentQuestionId !== this.state.last_Question_id) {
-            this.setState({ burned_questions: this.state.burned_questions + 1 })
-            this.setState({ last_Question_id: currentQuestionId })
+    burnCurrentQuestion = () => {
+        const { triviaId, lastQuestionId, burnedQuestions } = this.state
+        if (lastQuestionId === "" || triviaId !== lastQuestionId) {
+            this.setState({ burnedQuestions: burnedQuestions + 1 })
+            this.setState({ lastQuestionId: triviaId })
         }
     }
     dateFormat = () => {
-        let formatedDate = new Date(this.state.trivia_airdate);
+        const formatedDate = new Date(this.state.triviaAirdate);
         const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
         return formatedDate.toLocaleDateString(undefined, options)
     }
 
     render() {
-        if (this.state.trivia_id === "") {
+        if (this.state.triviaId === "") {
             return (
                 <div onClick={this.getTrivia} className="clickable start-game">
                     <h1  >START GAME</h1>
                 </div>
             )
-        } else {
-            return (
-                <div className="container">
-                    <div className="question-container">
-                        <div className=" row burned-questions">
-                            <p>Burned questions:  {this.state.burned_questions}</p>
-
-                        </div>
-                        <div className="row trivia-category">
-                            <p>trivia category: {this.state.trivia_category.title} </p>
-                        </div>
-                        <div className="row trivia-question">
-                            <div className="trivia-question__data">
-                                <div className="question-airdate"> air date: {this.dateFormat()} </div>
-                                <div className="question-dificulty"> dificulty:  {this.state.trivia_dificulty} </div>
-                                {this.state.showing
-                                    ? <div className="question-answer">{this.state.trivia_question}</div>
-                                    : <div className="question-answer">  {this.state.trivia_answer} </div>
-                                }
-                            </div>
-                            <div onClick={this.viewQuestion} className="clickable question-show-answer">
-                                {this.state.showing
-                                    ? <h1>REVEAL ANSWER</h1>
-                                    : <h1>VIEW QUESTION</h1>
-                                }
-                            </div>
-                        </div>
-                        {
-                            this.state.showing
-                                ? <div className="blocked row next-question">
-                                    <h1 >NEXT QUESTION</h1>
-                                </div>
-                                : <div onClick={this.newQuestion} className="clickable  row next-question ">
-                                    <h1 >NEXT QUESTION</h1>
-                                </div>
-                        }
-                    </div>
-                </div>
-            )
         }
+        const { triviaDificulty, triviaCategory, burnedQuestions, triviaQuestion, triviaAnswer, showing } = this.state
+        const dateFormat = this.dateFormat()
+        const newQuestion = this.newQuestion;
+        const viewQuestion = this.viewQuestion
+        return (
+            <div className="container">
+
+                <div className="question-container">
+                    <div className=" row burned-questions">
+                        <p>Burned questions:  {burnedQuestions}</p>
+                    </div>
+                    <div className="row trivia-category">
+                        <p>trivia category: {triviaCategory} </p>
+                    </div>
+                    <div className="row trivia-question">
+                        <div className="trivia-question__data">
+                            <div className="question-airdate"> air date: {dateFormat} </div>
+                            <div className="question-dificulty"> dificulty:  {triviaDificulty} </div>
+                            {showing
+                                ? <div className="question-answer">{triviaQuestion}</div>
+                                : <div className="question-answer">  {triviaAnswer} </div>
+                            }
+                        </div>
+                        <div onClick={viewQuestion} className="clickable question-show-answer">
+                            {showing
+                                ? <h1>REVEAL ANSWER</h1>
+                                : <h1>VIEW QUESTION</h1>
+                            }
+                        </div>
+                    </div>
+                    {
+                        showing
+                            ? <div className="blocked row next-question">
+                                <h1 >NEXT QUESTION</h1>
+                            </div>
+                            : <div onClick={newQuestion} className="clickable  row next-question ">
+                                <h1 >NEXT QUESTION</h1>
+                            </div>
+                    }
+                </div>
+            </div>
+        )
+
     }
 }
 
