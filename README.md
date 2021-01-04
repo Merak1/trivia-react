@@ -1,4 +1,3 @@
-
 # Descripción 
 Pequeño proyecto de React para jugar trivia con esta [API](http://jservice.io) como muestra técnica para el equipo de Nubesk. 
 
