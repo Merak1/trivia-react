@@ -14,7 +14,7 @@ class Main extends Component {
     }
     getTrivia = async () => {
         try {
-            const res = await fetch("http://jservice.io/api/random")
+            const res = await fetch("https://jservice.io/api/random")
             const data = await res.json()
             const triviaData = data[0]
             console.log(triviaData)
