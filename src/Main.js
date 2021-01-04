@@ -17,7 +17,6 @@ class Main extends Component {
             const res = await fetch("https://jservice.io/api/random")
             const data = await res.json()
             const triviaData = data[0]
-            console.log(triviaData)
             this.setState({
                 triviaId: triviaData.id,
                 triviaCategory: triviaData.category.title,
