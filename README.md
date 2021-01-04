@@ -1,70 +1,20 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Descripción 
+Pequeño proyecto de React para jugar trivia con esta [API](http://jservice.io) como muestra técnica para el equipo de Nubesk. 
 
-## Available Scripts
+Se obtienen los datos de la trivia a través de una llamada a la API y  se distribuyen los datos. 
+De igual manera se mantiene un contador de todas las preguntas que ya han desplegado su respuesta.
 
-In the project directory, you can run:
+# Posibilidades 
 
-### `npm start`
+Si se quisiera hacer una copia más textual de Jeopardy, se podría implementar un par de botones que indique si la respuesta era correcta o no, incluso a partir de un imput comparar la respuesta con la que nos regresa la API (aún que por cuestiones de estilo y de especificidad podría escalar la complejidad del proyecto),  a partir de las respuestas correctas e incorrectas un marcador que dependiendo de el valor de las preguntas correctas y las incorrectas muestre el total al final de determinadas preguntas. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# Notas
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Los requerimientos del proyecto son lo suficientemente simples como para que ameriten una estructura más avanzada que un estado sencillo con los datos de la api, así como el uso de múltiples componentes.
 
-### `npm test`
+Una de las razones por las que se puede mantener todo en un solo componente es el uso de el rendering condicional que nos permite no necesitar extra componentes para cosas como la pantalla inicial o los contenidos internos de la tabla de la trivia. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+De igual manera se pudo haber utilizado emotion  pero de nuevo el tamaño es demasiado pequeñocomo para ameritarlo. Quizás algún preprocesador si hubiera llegado a utlizar múltiples componentes. 
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# 🐳
