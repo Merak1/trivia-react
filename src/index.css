@@ -11,3 +11,27 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+@font-face {
+  font-family: 'Gyparody';
+  src: url('./fonts/gyopardy/Gyparody.eot');
+  src: url('./fonts/gyopardy/Gyparody.eot?#iefix') format('embedded-opentype'),
+      url('./fonts/gyopardy/Gyparody.woff2') format('woff2'),
+      url('./fonts/gyopardy/Gyparody.woff') format('woff'),
+      url('./fonts/gyopardy/Gyparody.ttf') format('truetype'),
+      url('./fonts/gyopardy/Gyparody.svg#Gyparody') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Swiss911';
+  src: url('./fonts/swiss911/Swiss911BT-ExtraCompressed.eot');
+  src: url('./fonts/swiss911/Swiss911BT-ExtraCompressed.eot?#iefix') format('embedded-opentype'),
+      url('./fonts/swiss911/Swiss911BT-ExtraCompressed.woff2') format('woff2'),
+      url('./fonts/swiss911/Swiss911BT-ExtraCompressed.woff') format('woff'),
+      url('./fonts/swiss911/Swiss911BT-ExtraCompressed.ttf') format('truetype'),
+      url('./fonts/swiss911/Swiss911BT-ExtraCompressed.svg#Swiss911BT-ExtraCompressed') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}

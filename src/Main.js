@@ -52,17 +52,17 @@ class Main extends Component {
     }
 
     render() {
-        if (this.state.triviaId === "") {
+        const { triviaId, triviaDificulty, triviaCategory, burnedQuestions, triviaQuestion, triviaAnswer, showing } = this.state
+        const dateFormat = this.dateFormat()
+        const newQuestion = this.newQuestion;
+        const viewQuestion = this.viewQuestion
+        if (triviaId === "") {
             return (
                 <div onClick={this.getTrivia} className="clickable start-game">
                     <h1  >START GAME</h1>
                 </div>
             )
         }
-        const { triviaDificulty, triviaCategory, burnedQuestions, triviaQuestion, triviaAnswer, showing } = this.state
-        const dateFormat = this.dateFormat()
-        const newQuestion = this.newQuestion;
-        const viewQuestion = this.viewQuestion
         return (
             <div className="container">
 
@@ -71,12 +71,12 @@ class Main extends Component {
                         <p>Burned questions:  {burnedQuestions}</p>
                     </div>
                     <div className="row trivia-category">
-                        <p>trivia category: {triviaCategory} </p>
+                        <p> category: {triviaCategory} </p>
                     </div>
                     <div className="row trivia-question">
                         <div className="trivia-question__data">
-                            <div className="question-airdate"> air date: {dateFormat} </div>
-                            <div className="question-dificulty"> dificulty:  {triviaDificulty} </div>
+                            <div className="question-airdate"><p title="air date"> {dateFormat}</p> </div>
+                            <div className="question-dificulty"><p title="dificulty">  $ {triviaDificulty}</p> </div>
                             {showing
                                 ? <div className="question-answer">{triviaQuestion}</div>
                                 : <div className="question-answer">  {triviaAnswer} </div>
