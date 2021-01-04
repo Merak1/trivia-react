@@ -1,7 +1,7 @@
 /* -----------Colors ------------- */
 :root {
   --brownish-red: #6b2c21;
-  --blocked-gray: #464c69;
+  --blocked-gray: #3e4b8b;
   --dark-blue: #041590;
   --hard-yellow: #e6ad32;
 }
@@ -28,12 +28,7 @@ p, h1{
   margin-block-end: 0;
 }
 
-.blocked {
-  cursor: not-allowed;
-  pointer-events: none;
-  background-color: var(--blocked-gray);
-  color: rgb(238, 238, 238);
-}
+
 .clickable{
   cursor: pointer;
 }
@@ -131,6 +126,12 @@ border-right: 1px solid black;
 .next-question:hover{
   border:solid 1px rgba(255,255,255,1);
 
+}
+.blocked {
+  cursor: not-allowed;
+  pointer-events: none;
+  background-color: var(--blocked-gray);
+  color: rgb(238, 238, 238);
 }
 .next-question h1{
   font-family: Gyparody;
